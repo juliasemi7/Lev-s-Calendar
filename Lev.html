@@ -112,14 +112,14 @@
         }
         
         /* Первый пакет 20 дней (январь-февраль) - светло-зеленый */
-        .calendar td.package-20day-1 {
+        .calendar td.package-20day-jan {
             background-color: rgba(144, 238, 144, 0.4); /* Светло-зеленый - LightGreen */
             font-weight: 600;
             color: #2c3e50;
         }
         
         /* Второй пакет 20 дней (февраль-март) - приятный голубой */
-        .calendar td.package-20day-2 {
+        .calendar td.package-20day-feb {
             background-color: rgba(173, 216, 230, 0.5); /* Приятный голубой - LightBlue */
             font-weight: 600;
             color: #2c3e50;
@@ -134,7 +134,7 @@
         }
         
         /* Комбинация для дней с обоими событиями (первый пакет + Лев) */
-        .calendar td.both-packages-1 {
+        .calendar td.both-packages-jan {
             background-color: rgba(144, 238, 144, 0.4); /* Светло-зеленый фон */
             font-weight: 700;
             color: #2c3e50;
@@ -142,7 +142,7 @@
         }
         
         /* Комбинация для дней с обоими событиями (второй пакет + Лев) */
-        .calendar td.both-packages-2 {
+        .calendar td.both-packages-feb {
             background-color: rgba(173, 216, 230, 0.5); /* Приятный голубой фон */
             font-weight: 700;
             color: #2c3e50;
@@ -192,12 +192,12 @@
             border: 1px solid #e74c3c;
         }
         
-        .package-20day-1-color {
+        .package-20day-jan-color {
             background-color: rgba(144, 238, 144, 0.4); /* Светло-зеленый */
             border: 1px solid #90EE90;
         }
         
-        .package-20day-2-color {
+        .package-20day-feb-color {
             background-color: rgba(173, 216, 230, 0.5); /* Приятный голубой */
             border: 1px solid #ADD8E6;
         }
@@ -207,12 +207,12 @@
             border: 2px solid #1e6bb8; /* Темный синий */
         }
         
-        .both-packages-1-color {
+        .both-packages-jan-color {
             background-color: rgba(144, 238, 144, 0.4); /* Светло-зеленый */
             border: 2px solid #1e6bb8; /* Темный синий */
         }
         
-        .both-packages-2-color {
+        .both-packages-feb-color {
             background-color: rgba(173, 216, 230, 0.5); /* Приятный голубой */
             border: 2px solid #1e6bb8; /* Темный синий */
         }
@@ -276,11 +276,11 @@
                     <span>Выходные дни</span>
                 </div>
                 <div class="legend-item">
-                    <div class="legend-color package-20day-1-color"></div>
+                    <div class="legend-color package-20day-jan-color"></div>
                     <span>Пакет 20 дней (январь-февраль)</span>
                 </div>
                 <div class="legend-item">
-                    <div class="legend-color package-20day-2-color"></div>
+                    <div class="legend-color package-20day-feb-color"></div>
                     <span>Пакет 20 дней (февраль-март)</span>
                 </div>
                 <div class="legend-item">
@@ -288,11 +288,11 @@
                     <span>Занятие Льва</span>
                 </div>
                 <div class="legend-item">
-                    <div class="legend-border both-packages-1-color"></div>
+                    <div class="legend-border both-packages-jan-color"></div>
                     <span>Оба события (1-й пакет + Лев)</span>
                 </div>
                 <div class="legend-item">
-                    <div class="legend-border both-packages-2-color"></div>
+                    <div class="legend-border both-packages-feb-color"></div>
                     <span>Оба события (2-й пакет + Лев)</span>
                 </div>
             </div>
@@ -319,7 +319,7 @@
         const year = 2026;
         
         // ПЕРВЫЙ пакет из 20 рабочих дней (январь-февраль) - светло-зеленый
-        const package20Days1 = [
+        const package20DaysJan = [
             "2026-01-22", "2026-01-23",
             "2026-01-26", "2026-01-27", "2026-01-28", "2026-01-29", "2026-01-30",
             "2026-02-02", "2026-02-03", "2026-02-04", "2026-02-05", "2026-02-06",
@@ -329,7 +329,7 @@
         
         // ВТОРОЙ пакет из 20 рабочих дней (февраль-март) - приятный голубой
         // Начинаем с 19 февраля - 20 рабочих дней
-        const package20Days2 = [
+        const package20DaysFeb = [
             "2026-02-19", "2026-02-20",
             "2026-02-23", "2026-02-24", "2026-02-25", "2026-02-26", "2026-02-27",
             "2026-03-02", "2026-03-03", "2026-03-04", "2026-03-05", "2026-03-06",
@@ -340,24 +340,12 @@
         // Занятия Льва (понедельник и четверг) - всего 16 занятий (8+8)
         const packageLev = [
             // Первые 8 занятий (в первом пакете)
-            "2026-01-22", // Чт - первое занятие
-            "2026-01-26", // Пн
-            "2026-01-29", // Чт
-            "2026-02-02", // Пн
-            "2026-02-05", // Чт
-            "2026-02-09", // Пн
-            "2026-02-12", // Чт
-            "2026-02-16", // Пн - последнее занятие первого пакета
+            "2026-01-22", "2026-01-26", "2026-01-29", "2026-02-02",
+            "2026-02-05", "2026-02-09", "2026-02-12", "2026-02-16",
             
             // Следующие 8 занятий (во втором пакете, начиная с 19 февраля)
-            "2026-02-19", // Чт - 9-е занятие
-            "2026-02-23", // Пн - 10-е занятие
-            "2026-02-26", // Чт - 11-е занятие
-            "2026-03-02", // Пн - 12-е занятие
-            "2026-03-05", // Чт - 13-е занятие
-            "2026-03-09", // Пн - 14-е занятие
-            "2026-03-12", // Чт - 15-е занятие
-            "2026-03-16"  // Пн - 16-е занятие
+            "2026-02-19", "2026-02-23", "2026-02-26", "2026-03-02",
+            "2026-03-05", "2026-03-09", "2026-03-12", "2026-03-16"
         ];
         
         // Функция для получения количества дней в месяце
@@ -378,15 +366,15 @@
         }
         
         // Функция для проверки, входит ли дата в первый пакет из 20 дней
-        function isInPackage20Days1(year, month, day) {
+        function isInPackage20DaysJan(year, month, day) {
             const dateStr = formatDate(year, month, day);
-            return package20Days1.includes(dateStr);
+            return package20DaysJan.includes(dateStr);
         }
         
         // Функция для проверки, входит ли дата во второй пакет из 20 дней
-        function isInPackage20Days2(year, month, day) {
+        function isInPackage20DaysFeb(year, month, day) {
             const dateStr = formatDate(year, month, day);
-            return package20Days2.includes(dateStr);
+            return package20DaysFeb.includes(dateStr);
         }
         
         // Функция для проверки, входит ли дата в занятия Льва
@@ -442,22 +430,22 @@
                     // Добавляем текущий день месяца
                     else {
                         const isWeekend = dayOfWeek === 5 || dayOfWeek === 6; // 5 = суббота, 6 = воскресенье
-                        const inPackage20Days1 = isInPackage20Days1(year, month, dayCounter);
-                        const inPackage20Days2 = isInPackage20Days2(year, month, dayCounter);
+                        const inPackage20DaysJan = isInPackage20DaysJan(year, month, dayCounter);
+                        const inPackage20DaysFeb = isInPackage20DaysFeb(year, month, dayCounter);
                         const inPackageLev = isInPackageLev(year, month, dayCounter);
                         
                         let dayClass = "";
                         if (isWeekend) dayClass += " weekend";
                         
                         // Проверяем комбинации событий
-                        if (inPackage20Days1 && inPackageLev) {
-                            dayClass += " both-packages-1";
-                        } else if (inPackage20Days2 && inPackageLev) {
-                            dayClass += " both-packages-2";
-                        } else if (inPackage20Days1) {
-                            dayClass += " package-20day-1";
-                        } else if (inPackage20Days2) {
-                            dayClass += " package-20day-2";
+                        if (inPackage20DaysJan && inPackageLev) {
+                            dayClass += " both-packages-jan";
+                        } else if (inPackage20DaysFeb && inPackageLev) {
+                            dayClass += " both-packages-feb";
+                        } else if (inPackage20DaysJan) {
+                            dayClass += " package-20day-jan";
+                        } else if (inPackage20DaysFeb) {
+                            dayClass += " package-20day-feb";
                         } else if (inPackageLev) {
                             dayClass += " package-lev";
                         }
