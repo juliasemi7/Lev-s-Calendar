@@ -352,14 +352,14 @@
             const daysInMonth = getDaysInMonth(year, month);
             const firstDayIndex = getFirstDayOfMonth(year, month);
             
-            let html = `<div class="month-container"><div class="month-header">${monthNames[month]} ${year}</div><table class="calendar"><thead> <tr>`;
+            let html = `<div class="month-container"><div class="month-header">${monthNames[month]} ${year}</div><table class="calendar"><thead><tr>`;
             
             for (let day of dayNames) {
                 const isWeekend = day === "Сб" || day === "Вс";
                 html += `<th${isWeekend ? ' style="color:#e74c3c;"' : ''}>${day}</th>`;
             }
             
-            html += `</thead><tbody>`;
+            html += `</tr></thead><tbody>`;
             
             let dayCounter = 1;
             
@@ -370,10 +370,10 @@
                     if (week === 0 && dayOfWeek < firstDayIndex) {
                         const prevMonthDays = getDaysInMonth(year, month - 1);
                         const prevMonthDay = prevMonthDays - (firstDayIndex - dayOfWeek - 1);
-                        html += `<td class="other-month">${prevMonthDay} 3`;
+                        html += `<td class="other-month">${prevMonthDay}</td>`;
                     } else if (dayCounter > daysInMonth) {
                         const nextMonthDay = dayCounter - daysInMonth;
-                        html += `<td class="other-month">${nextMonthDay} 3`;
+                        html += `<td class="other-month">${nextMonthDay}</td>`;
                         dayCounter++;
                     } else {
                         const isWeekend = dayOfWeek === 5 || dayOfWeek === 6;
@@ -392,16 +392,16 @@
                         else if (inMar) dayClass += " package-20day-mar";
                         else if (inLev) dayClass += " package-lev";
                         
-                        html += `<td class="${dayClass}">${dayCounter} 3`;
+                        html += `<td class="${dayClass}">${dayCounter}</td>`;
                         dayCounter++;
                     }
                 }
                 
-                html += " ";
+                html += "</tr>";
                 if (dayCounter > daysInMonth) break;
             }
             
-            html += `</tbody>  </div>`;
+            html += `</tbody></table></div>`;
             return html;
         }
         
