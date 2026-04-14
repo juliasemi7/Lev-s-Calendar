@@ -110,20 +110,30 @@
             background-color: #FFF9F0;
         }
         
-        .calendar td.package-20day-jan {
+        /* Первый пакет (январь-февраль) - светло-зеленый */
+        .calendar td.package-20day-1 {
             background-color: rgba(144, 238, 144, 0.4);
             font-weight: 600;
             color: #2c3e50;
         }
         
-        .calendar td.package-20day-feb {
+        /* Второй пакет (февраль-март) - голубой */
+        .calendar td.package-20day-2 {
             background-color: rgba(173, 216, 230, 0.5);
             font-weight: 600;
             color: #2c3e50;
         }
         
-        .calendar td.package-20day-mar {
+        /* Третий пакет (март-апрель) - персиковый */
+        .calendar td.package-20day-3 {
             background-color: rgba(255, 218, 185, 0.6);
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        /* Четвертый пакет (апрель-май) - желтый */
+        .calendar td.package-20day-4 {
+            background-color: rgba(255, 255, 153, 0.7);
             font-weight: 600;
             color: #2c3e50;
         }
@@ -135,22 +145,29 @@
             background-color: white;
         }
         
-        .calendar td.both-packages-jan {
+        .calendar td.both-packages-1 {
             background-color: rgba(144, 238, 144, 0.4);
             font-weight: 700;
             color: #2c3e50;
             border: 2px solid #1e6bb8;
         }
         
-        .calendar td.both-packages-feb {
+        .calendar td.both-packages-2 {
             background-color: rgba(173, 216, 230, 0.5);
             font-weight: 700;
             color: #2c3e50;
             border: 2px solid #1e6bb8;
         }
         
-        .calendar td.both-packages-mar {
+        .calendar td.both-packages-3 {
             background-color: rgba(255, 218, 185, 0.6);
+            font-weight: 700;
+            color: #2c3e50;
+            border: 2px solid #1e6bb8;
+        }
+        
+        .calendar td.both-packages-4 {
+            background-color: rgba(255, 255, 153, 0.7);
             font-weight: 700;
             color: #2c3e50;
             border: 2px solid #1e6bb8;
@@ -170,7 +187,7 @@
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-            max-width: 1200px;
+            max-width: 1400px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -199,19 +216,24 @@
             border: 1px solid #e74c3c;
         }
         
-        .package-20day-jan-color {
+        .package-20day-1-color {
             background-color: rgba(144, 238, 144, 0.4);
             border: 1px solid #90EE90;
         }
         
-        .package-20day-feb-color {
+        .package-20day-2-color {
             background-color: rgba(173, 216, 230, 0.5);
             border: 1px solid #ADD8E6;
         }
         
-        .package-20day-mar-color {
+        .package-20day-3-color {
             background-color: rgba(255, 218, 185, 0.6);
             border: 1px solid #FFDAB9;
+        }
+        
+        .package-20day-4-color {
+            background-color: rgba(255, 255, 153, 0.7);
+            border: 1px solid #FFFF99;
         }
         
         .package-lev-color {
@@ -219,18 +241,23 @@
             border: 2px solid #1e6bb8;
         }
         
-        .both-packages-jan-color {
+        .both-packages-1-color {
             background-color: rgba(144, 238, 144, 0.4);
             border: 2px solid #1e6bb8;
         }
         
-        .both-packages-feb-color {
+        .both-packages-2-color {
             background-color: rgba(173, 216, 230, 0.5);
             border: 2px solid #1e6bb8;
         }
         
-        .both-packages-mar-color {
+        .both-packages-3-color {
             background-color: rgba(255, 218, 185, 0.6);
+            border: 2px solid #1e6bb8;
+        }
+        
+        .both-packages-4-color {
+            background-color: rgba(255, 255, 153, 0.7);
             border: 2px solid #1e6bb8;
         }
         
@@ -256,13 +283,15 @@
             
             <div class="legend">
                 <div class="legend-item"><div class="legend-color weekend-color"></div><span>Выходные дни</span></div>
-                <div class="legend-item"><div class="legend-color package-20day-jan-color"></div><span>Пакет 20 дней (январь-февраль)</span></div>
-                <div class="legend-item"><div class="legend-color package-20day-feb-color"></div><span>Пакет 20 дней (февраль-март)</span></div>
-                <div class="legend-item"><div class="legend-color package-20day-mar-color"></div><span>Пакет 20 дней (март-апрель)</span></div>
+                <div class="legend-item"><div class="legend-color package-20day-1-color"></div><span>Пакет 20 дней (январь-февраль)</span></div>
+                <div class="legend-item"><div class="legend-color package-20day-2-color"></div><span>Пакет 20 дней (февраль-март)</span></div>
+                <div class="legend-item"><div class="legend-color package-20day-3-color"></div><span>Пакет 20 дней (март-апрель)</span></div>
+                <div class="legend-item"><div class="legend-color package-20day-4-color"></div><span>Пакет 20 дней (апрель-май)</span></div>
                 <div class="legend-item"><div class="legend-border package-lev-color"></div><span>Занятие Льва</span></div>
-                <div class="legend-item"><div class="legend-border both-packages-jan-color"></div><span>1-й пакет + Лев</span></div>
-                <div class="legend-item"><div class="legend-border both-packages-feb-color"></div><span>2-й пакет + Лев</span></div>
-                <div class="legend-item"><div class="legend-border both-packages-mar-color"></div><span>3-й пакет + Лев</span></div>
+                <div class="legend-item"><div class="legend-border both-packages-1-color"></div><span>1-й пакет + Лев</span></div>
+                <div class="legend-item"><div class="legend-border both-packages-2-color"></div><span>2-й пакет + Лев</span></div>
+                <div class="legend-item"><div class="legend-border both-packages-3-color"></div><span>3-й пакет + Лев</span></div>
+                <div class="legend-item"><div class="legend-border both-packages-4-color"></div><span>4-й пакет + Лев</span></div>
             </div>
         </main>
         
@@ -278,7 +307,7 @@
         const year = 2026;
         
         // ПЕРВЫЙ ПАКЕТ: 22 января - 18 февраля (светло-зеленый)
-        const package20DaysJan = [
+        const package20Days1 = [
             "2026-01-22", "2026-01-23",
             "2026-01-26", "2026-01-27", "2026-01-28", "2026-01-29", "2026-01-30",
             "2026-02-02", "2026-02-03", "2026-02-04", "2026-02-05", "2026-02-06",
@@ -287,7 +316,7 @@
         ];
         
         // ВТОРОЙ ПАКЕТ: 19 февраля - 18 марта (голубой)
-        const package20DaysFeb = [
+        const package20Days2 = [
             "2026-02-19", "2026-02-20",
             "2026-02-23", "2026-02-24", "2026-02-25", "2026-02-26", "2026-02-27",
             "2026-03-02", "2026-03-03", "2026-03-04", "2026-03-05", "2026-03-06",
@@ -296,12 +325,21 @@
         ];
         
         // ТРЕТИЙ ПАКЕТ: 19 марта - 15 апреля (персиковый)
-        const package20DaysMar = [
+        const package20Days3 = [
             "2026-03-19", "2026-03-20",
             "2026-03-23", "2026-03-24", "2026-03-25", "2026-03-26", "2026-03-27",
             "2026-03-30", "2026-03-31", "2026-04-01", "2026-04-02", "2026-04-03",
             "2026-04-06", "2026-04-07", "2026-04-08", "2026-04-09", "2026-04-10",
             "2026-04-13", "2026-04-14", "2026-04-15"
+        ];
+        
+        // ЧЕТВЕРТЫЙ ПАКЕТ: 16 апреля - 13 мая (желтый)
+        const package20Days4 = [
+            "2026-04-16", "2026-04-17",
+            "2026-04-20", "2026-04-21", "2026-04-22", "2026-04-23", "2026-04-24",
+            "2026-04-27", "2026-04-28", "2026-04-29", "2026-04-30",
+            "2026-05-04", "2026-05-05", "2026-05-06", "2026-05-07", "2026-05-08",
+            "2026-05-12", "2026-05-13"
         ];
         
         // ЗАНЯТИЯ ЛЬВА - ПОНЕДЕЛЬНИК И ЧЕТВЕРГ (8 занятий в каждом пакете)
@@ -316,7 +354,11 @@
             
             // Третий пакет (март-апрель)
             "2026-03-19", "2026-03-23", "2026-03-26", "2026-03-30",
-            "2026-04-02", "2026-04-06", "2026-04-09", "2026-04-13"
+            "2026-04-02", "2026-04-06", "2026-04-09", "2026-04-13",
+            
+            // Четвертый пакет (апрель-май) - 8 занятий
+            "2026-04-16", "2026-04-20", "2026-04-23", "2026-04-27",
+            "2026-04-30", "2026-05-04", "2026-05-07", "2026-05-12"
         ];
         
         function getDaysInMonth(year, month) {
@@ -332,16 +374,20 @@
             return `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
         }
         
-        function isInPackage20DaysJan(year, month, day) {
-            return package20DaysJan.includes(formatDate(year, month, day));
+        function isInPackage20Days1(year, month, day) {
+            return package20Days1.includes(formatDate(year, month, day));
         }
         
-        function isInPackage20DaysFeb(year, month, day) {
-            return package20DaysFeb.includes(formatDate(year, month, day));
+        function isInPackage20Days2(year, month, day) {
+            return package20Days2.includes(formatDate(year, month, day));
         }
         
-        function isInPackage20DaysMar(year, month, day) {
-            return package20DaysMar.includes(formatDate(year, month, day));
+        function isInPackage20Days3(year, month, day) {
+            return package20Days3.includes(formatDate(year, month, day));
+        }
+        
+        function isInPackage20Days4(year, month, day) {
+            return package20Days4.includes(formatDate(year, month, day));
         }
         
         function isInPackageLev(year, month, day) {
@@ -377,19 +423,22 @@
                         dayCounter++;
                     } else {
                         const isWeekend = dayOfWeek === 5 || dayOfWeek === 6;
-                        const inJan = isInPackage20DaysJan(year, month, dayCounter);
-                        const inFeb = isInPackage20DaysFeb(year, month, dayCounter);
-                        const inMar = isInPackage20DaysMar(year, month, dayCounter);
+                        const in1 = isInPackage20Days1(year, month, dayCounter);
+                        const in2 = isInPackage20Days2(year, month, dayCounter);
+                        const in3 = isInPackage20Days3(year, month, dayCounter);
+                        const in4 = isInPackage20Days4(year, month, dayCounter);
                         const inLev = isInPackageLev(year, month, dayCounter);
                         
                         let dayClass = isWeekend ? " weekend" : "";
                         
-                        if (inJan && inLev) dayClass += " both-packages-jan";
-                        else if (inFeb && inLev) dayClass += " both-packages-feb";
-                        else if (inMar && inLev) dayClass += " both-packages-mar";
-                        else if (inJan) dayClass += " package-20day-jan";
-                        else if (inFeb) dayClass += " package-20day-feb";
-                        else if (inMar) dayClass += " package-20day-mar";
+                        if (in1 && inLev) dayClass += " both-packages-1";
+                        else if (in2 && inLev) dayClass += " both-packages-2";
+                        else if (in3 && inLev) dayClass += " both-packages-3";
+                        else if (in4 && inLev) dayClass += " both-packages-4";
+                        else if (in1) dayClass += " package-20day-1";
+                        else if (in2) dayClass += " package-20day-2";
+                        else if (in3) dayClass += " package-20day-3";
+                        else if (in4) dayClass += " package-20day-4";
                         else if (inLev) dayClass += " package-lev";
                         
                         html += `<td class="${dayClass}">${dayCounter}</td>`;
@@ -407,6 +456,7 @@
         
         function createYearCalendar() {
             const container = document.getElementById("calendar-container");
+            container.innerHTML = "";
             for (let month = 0; month < 12; month++) {
                 container.innerHTML += createMonthCalendar(year, month);
             }
