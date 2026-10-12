@@ -37,6 +37,7 @@
         .pkg-6 { background-color: #fce7f3; color: #9d174d; border: 1px solid #fbcfe8; }
         .pkg-7 { background-color: #ffedd5; color: #c2410c; border: 1px solid #fdba74; }
         .pkg-8 { background-color: #ccfbf1; color: #115e59; border: 1px solid #99f6e4; }
+        .pkg-9 { background-color: #dbeafe; color: #1e40af; border: 1px solid #bfdbfe; }
 
         /* Lesson ring highlighting */
         .has-lesson {
@@ -170,6 +171,13 @@
             "2026-09-14","2026-09-15","2026-09-16","2026-09-17","2026-09-18"
         ];
 
+        const pkg9 = [
+            "2026-09-21","2026-09-22","2026-09-23","2026-09-24","2026-09-25",
+            "2026-09-28","2026-09-29","2026-09-30","2026-10-01","2026-10-02",
+            "2026-10-05","2026-10-06","2026-10-07","2026-10-08","2026-10-09",
+            "2026-10-12","2026-10-13","2026-10-14","2026-10-15","2026-10-16"
+        ];
+
         // Lev's Lessons Schedule (Mondays + Thursdays)
         const lessons = [
             "2026-01-22","2026-01-26","2026-01-29","2026-02-02",
@@ -187,7 +195,9 @@
             "2026-07-27","2026-07-30","2026-08-03","2026-08-06",
             "2026-08-10","2026-08-13","2026-08-17","2026-08-20",
             "2026-08-24","2026-08-27","2026-08-31","2026-09-03",
-            "2026-09-07","2026-09-10","2026-09-14","2026-09-17"
+            "2026-09-07","2026-09-10","2026-09-14","2026-09-17",
+            "2026-09-21","2026-09-24","2026-09-28","2026-10-01",
+            "2026-10-05","2026-10-08","2026-10-12","2026-10-15"
         ];
 
         function getDaysInMonth(y, m) { return new Date(y, m + 1, 0).getDate(); }
@@ -203,6 +213,7 @@
             if (pkg6.includes(dateStr)) return 6;
             if (pkg7.includes(dateStr)) return 7;
             if (pkg8.includes(dateStr)) return 8;
+            if (pkg9.includes(dateStr)) return 9;
             return null;
         }
 
