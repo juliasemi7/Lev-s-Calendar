@@ -5,96 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2026 - Lev's Calendar</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'] },
-                    boxShadow: {
-                        'soft': '0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 4px 10px -7px rgba(0, 0, 0, 0.05)',
-                        'hover': '0 20px 35px -10px rgba(0, 0, 0, 0.1), 0 10px 15px -5px rgba(0, 0, 0, 0.05)',
-                    }
-                }
-            }
-        }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #f6f8fc 0%, #eef2f7 100%);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            color: #0f172a;
             min-height: 100vh;
         }
 
-        .pkg-1 { background-color: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; }
-        .pkg-2 { background-color: #e0f2fe; color: #075985; border: 1px solid #bae6fd; }
-        .pkg-3 { background-color: #ffedd5; color: #9a3412; border: 1px solid #fed7aa; }
-        .pkg-4 { background-color: #fef9c3; color: #854d0e; border: 1px solid #fef08a; }
-        .pkg-5 { background-color: #f3e8ff; color: #6b21a8; border: 1px solid #e9d5ff; }
-        .pkg-6 { background-color: #fce7f3; color: #9d174d; border: 1px solid #fbcfe8; }
-        .pkg-7 { background-color: #ffedd5; color: #c2410c; border: 1px solid #fdba74; }
-        .pkg-8 { background-color: #ccfbf1; color: #115e59; border: 1px solid #99f6e4; }
-        .pkg-9 { background-color: #dbeafe; color: #1e40af; border: 1px solid #bfdbfe; }
-        .pkg-10 { background-color: #e2e8f0; color: #334155; border: 1px solid #cbd5e1; }
+        .pkg-1 { background-color: rgba(144, 238, 144, 0.35); }
+        .pkg-2 { background-color: rgba(173, 216, 230, 0.4); }
+        .pkg-3 { background-color: rgba(255, 218, 185, 0.5); }
+        .pkg-4 { background-color: rgba(255, 255, 153, 0.45); }
+        .pkg-5 { background-color: rgba(216, 191, 216, 0.45); }
+        .pkg-6 { background-color: rgba(255, 182, 193, 0.4); }
+        .pkg-7 { background-color: rgba(255, 160, 122, 0.45); }
+        .pkg-8 { background-color: rgba(152, 251, 152, 0.45); }
+        .pkg-9 { background-color: rgba(147, 197, 253, 0.45); }
+        .pkg-10 { background-color: rgba(167, 243, 208, 0.5); }
 
-        .has-lesson {
-            box-shadow: inset 0 0 0 2px #2563eb, 0 2px 4px rgba(37, 99, 235, 0.2);
-            font-weight: 700 !important;
-            position: relative;
+        .lesson-border {
+            box-shadow: inset 0 0 0 2.5px #1d4ed8, 0 4px 12px rgba(29, 78, 216, 0.15);
+            font-weight: 800;
+            transform: scale(1.05);
+            z-index: 10;
         }
 
-        .has-lesson::after {
-            content: '';
-            position: absolute;
-            top: 2px;
-            right: 2px;
-            width: 6px;
-            height: 6px;
-            background-color: #2563eb;
-            border-radius: 50%;
+        .day-cell {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
-        .weekend-day {
-            background-color: #fff5f5;
-            color: #e11d48;
+        .day-cell:hover {
+            transform: scale(1.1);
+            z-index: 20;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
-<body class="text-slate-800 antialiased py-8 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-7xl mx-auto space-y-8">
-        <header class="text-center py-6 bg-white/70 backdrop-blur-md rounded-2xl border border-white/80 shadow-soft">
-            <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">2026</h1>
-            <div class="text-lg sm:text-xl font-bold text-blue-600 tracking-widest uppercase mt-1">Lev's Calendar</div>
+<body class="py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <header class="text-center mb-12 bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 text-white py-12 px-6 rounded-3xl shadow-2xl relative overflow-hidden">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.15),transparent_50%)]"></div>
+            <div class="relative z-10">
+                <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-2">2026</h1>
+                <h2 class="text-2xl sm:text-4xl font-bold tracking-tight opacity-95">Lev's Calendar</h2>
+            </div>
         </header>
 
-        <div id="info-bar" class="hidden transition-all duration-300 bg-blue-900 text-white px-5 py-3 rounded-xl shadow-lg flex items-center justify-between text-sm sm:text-base font-medium">
-            <span id="info-date" class="font-semibold text-blue-200"></span>
-            <span id="info-status" class="bg-blue-800 px-3 py-1 rounded-lg"></span>
-        </div>
-
         <main>
-            <div id="calendar-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
-
-            <div class="mt-10 bg-white/80 backdrop-blur-md rounded-2xl p-6 border border-white shadow-soft text-center">
-                <h2 class="text-base sm:text-lg font-bold text-slate-900 mb-4 inline-flex items-center gap-2">
-                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    Обозначения
-                </h2>
-                <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs sm:text-sm">
-                    <div class="flex items-center gap-2.5 p-2 px-4 rounded-xl bg-slate-50 border border-slate-100">
-                        <div class="w-6 h-6 rounded-lg weekend-day flex items-center justify-center font-bold text-xs">Сб</div>
-                        <span class="font-medium text-slate-600">Выходные дни</span>
-                    </div>
-                    <div class="flex items-center gap-2.5 p-2 px-4 rounded-xl bg-slate-50 border border-slate-100">
-                        <div class="w-6 h-6 rounded-lg bg-white has-lesson flex items-center justify-center font-bold text-xs text-blue-600">12</div>
-                        <span class="font-medium text-slate-600">Занятие Льва (Пн / Чт)</span>
-                    </div>
-                </div>
-            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 max-w-5xl mx-auto" id="calendar-container"></div>
         </main>
 
-        <footer class="text-center py-6 text-xs text-slate-400 border-t border-slate-200/60">
-            © 2026 Lev's Schedule Calendar
+        <footer class="text-center text-slate-400 text-sm mt-12 pt-6 border-t border-slate-200/80 font-medium">
+            <p>© 2026 Расписание Льва. Все права защищены.</p>
         </footer>
     </div>
 
@@ -195,122 +158,102 @@
             "2026-09-07","2026-09-10","2026-09-14","2026-09-17",
             "2026-09-21","2026-09-24","2026-09-28","2026-10-01",
             "2026-10-05","2026-10-08","2026-10-12","2026-10-15",
-            // новый пакет 10 (пн + чт)
             "2026-10-19","2026-10-22","2026-10-26","2026-10-29",
             "2026-11-02","2026-11-05","2026-11-09","2026-11-12"
         ];
 
-        function getDaysInMonth(y, m) { return new Date(y, m + 1, 0).getDate(); }
-        function getFirstDayOfMonth(y, m) { const d = new Date(y, m, 1).getDay(); return d === 0 ? 6 : d - 1; }
-        function formatDate(y, m, d) { return `${y}-${String(m + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`; }
+        function getDaysInMonth(y,m) { return new Date(y, m+1, 0).getDate(); }
+        function getFirstDayOfMonth(y,m) { const d = new Date(y,m,1).getDay(); return d===0 ? 6 : d-1; }
+        function formatDate(y,m,d) { return `${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`; }
+        function isInPackage(pkg, y,m,d) { return pkg.includes(formatDate(y,m,d)); }
+        function isLesson(y,m,d) { return lessons.includes(formatDate(y,m,d)); }
 
-        function getPackageNumber(dateStr) {
-            if (pkg1.includes(dateStr)) return 1;
-            if (pkg2.includes(dateStr)) return 2;
-            if (pkg3.includes(dateStr)) return 3;
-            if (pkg4.includes(dateStr)) return 4;
-            if (pkg5.includes(dateStr)) return 5;
-            if (pkg6.includes(dateStr)) return 6;
-            if (pkg7.includes(dateStr)) return 7;
-            if (pkg8.includes(dateStr)) return 8;
-            if (pkg9.includes(dateStr)) return 9;
-            if (pkg10.includes(dateStr)) return 10;
-            return null;
-        }
-
-        function isLesson(dateStr) { return lessons.includes(dateStr); }
-
-        function createMonthCard(y, m) {
-            const dim = getDaysInMonth(y, m);
-            const off = getFirstDayOfMonth(y, m);
-            const total = Math.ceil((off + dim) / 7) * 7;
+        function createMonthCalendar(y,m) {
+            const dim = getDaysInMonth(y,m);
+            const off = getFirstDayOfMonth(y,m);
+            const total = Math.ceil((off + dim)/7)*7;
 
             let html = `
-            <div class="bg-white/80 backdrop-blur-md rounded-2xl p-5 border border-white/90 shadow-soft hover:shadow-hover transition-all duration-300">
-                <div class="flex items-center justify-between mb-4 pb-2 border-b border-slate-100">
-                    <h3 class="text-lg font-bold text-slate-800">${monthNames[m]}</h3>
-                    <span class="text-xs font-semibold px-2.5 py-1 bg-slate-100 text-slate-500 rounded-full">${y}</span>
-                </div>
-                <div class="grid grid-cols-7 gap-1 text-center mb-2">
+                <div class="bg-white/90 backdrop-blur-md rounded-3xl shadow-lg border border-slate-200/80 overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+                    <div class="bg-gradient-to-r from-slate-50 to-slate-100 text-slate-800 font-extrabold text-center py-4 text-base border-b border-slate-200/60 tracking-wide uppercase">
+                        ${monthNames[m]} ${y}
+                    </div>
+                    <div class="p-5">
+                        <table class="w-full border-collapse">
+                            <thead>
+                                <tr class="border-b border-slate-100">
             `;
 
-            dayNames.forEach((wd, idx) => {
-                const isWk = idx >= 5;
-                html += `<div class="text-xs font-bold ${isWk ? 'text-rose-500' : 'text-slate-400'} py-1">${wd}</div>`;
-            });
-
-            html += `</div><div class="grid grid-cols-7 gap-1 text-center">`;
+            for (let wd of dayNames) {
+                const isW = (wd === "Сб" || wd === "Вс");
+                html += `<th class="py-2.5 text-xs font-bold ${isW ? 'text-red-500' : 'text-slate-400'}">${wd}</th>`;
+            }
+            html += `</tr></thead><tbody>`;
 
             let day = 1;
             for (let i = 0; i < total; i++) {
+                if (i % 7 === 0) html += "<tr>";
                 if (i >= off && day <= dim) {
-                    const dateStr = formatDate(y, m, day);
-                    const pkgNum = getPackageNumber(dateStr);
-                    const hasLes = isLesson(dateStr);
-                    const dateObj = new Date(y, m, day);
-                    const isWk = dateObj.getDay() === 0 || dateObj.getDay() === 6;
+                    const inP1 = isInPackage(pkg1, y, m, day);
+                    const inP2 = isInPackage(pkg2, y, m, day);
+                    const inP3 = isInPackage(pkg3, y, m, day);
+                    const inP4 = isInPackage(pkg4, y, m, day);
+                    const inP5 = isInPackage(pkg5, y, m, day);
+                    const inP6 = isInPackage(pkg6, y, m, day);
+                    const inP7 = isInPackage(pkg7, y, m, day);
+                    const inP8 = isInPackage(pkg8, y, m, day);
+                    const inP9 = isInPackage(pkg9, y, m, day);
+                    const inP10 = isInPackage(pkg10, y, m, day);
+                    const hasLesson = isLesson(y, m, day);
+                    const isWeekend = (new Date(y, m, day).getDay() === 0 || new Date(y, m, day).getDay() === 6);
 
-                    let classes = "h-9 rounded-xl flex items-center justify-center text-xs font-medium transition-all duration-200 cursor-pointer ";
+                    let pkgBg = "";
+                    if (inP1) pkgBg = "pkg-1";
+                    else if (inP2) pkgBg = "pkg-2";
+                    else if (inP3) pkgBg = "pkg-3";
+                    else if (inP4) pkgBg = "pkg-4";
+                    else if (inP5) pkgBg = "pkg-5";
+                    else if (inP6) pkgBg = "pkg-6";
+                    else if (inP7) pkgBg = "pkg-7";
+                    else if (inP8) pkgBg = "pkg-8";
+                    else if (inP9) pkgBg = "pkg-9";
+                    else if (inP10) pkgBg = "pkg-10";
 
-                    if (pkgNum) {
-                        classes += `pkg-${pkgNum} `;
-                    } else if (isWk) {
-                        classes += "weekend-day ";
+                    let cls;
+                    if (hasLesson) {
+                        cls = pkgBg ? `lesson-border ${pkgBg} text-slate-900 rounded-xl` : "lesson-border bg-white text-blue-700 rounded-xl";
+                    } else if (pkgBg) {
+                        cls = `${pkgBg} font-semibold rounded-xl`;
+                    } else if (isWeekend) {
+                        cls = "bg-red-50/80 text-red-600 font-medium rounded-xl";
                     } else {
-                        classes += "text-slate-700 hover:bg-slate-100 ";
+                        cls = "font-medium hover:bg-slate-50 rounded-xl text-slate-700";
                     }
 
-                    if (hasLes) {
-                        classes += "has-lesson ";
-                    }
-
-                    let statusText = [];
-                    if (pkgNum) statusText.push(`Пакет ${pkgNum}`);
-                    if (hasLes) statusText.push("Занятие Льва");
-                    if (isWk && !pkgNum) statusText.push("Выходной");
-                    if (statusText.length === 0) statusText.push("Рабочий день");
-
-                    const fullStatus = statusText.join(" + ");
-                    const readableDate = `${day} ${monthNames[m]} ${y}`;
-
-                    html += `
-                        <div class="${classes}" 
-                             onmouseenter="showInfo('${readableDate}', '${fullStatus}')"
-                             onmouseleave="hideInfo()">
-                            ${day}
-                        </div>
-                    `;
+                    html += `<td><div class="day-cell w-9 h-9 mx-auto my-1 flex items-center justify-center text-sm cursor-default ${cls}">${day}</div></td>`;
                     day++;
                 } else {
-                    html += `<div class="h-9"></div>`;
+                    let prevMonth = m === 0 ? 11 : m - 1;
+                    let prevYear = m === 0 ? y - 1 : y;
+                    let daysPrev = getDaysInMonth(prevYear, prevMonth);
+                    let prevDay = daysPrev - (off - i - 1);
+                    html += `<td><div class="w-9 h-9 mx-auto my-1 flex items-center justify-center rounded-xl text-sm text-slate-300 font-medium">${prevDay}</div></td>`;
                 }
+                if (i % 7 === 6) html += "</tr>";
             }
-
-            html += `</div></div>`;
+            html += `</tbody></table></div></div>`;
             return html;
         }
 
-        function showInfo(date, status) {
-            const bar = document.getElementById("info-bar");
-            document.getElementById("info-date").textContent = date;
-            document.getElementById("info-status").textContent = status;
-            bar.classList.remove("hidden");
-        }
-
-        function hideInfo() {
-            const bar = document.getElementById("info-bar");
-            bar.classList.add("hidden");
-        }
-
-        function render() {
+        function renderCalendar() {
             const container = document.getElementById("calendar-container");
             container.innerHTML = "";
             for (let m = 0; m < 12; m++) {
-                container.innerHTML += createMonthCard(year, m);
+                container.innerHTML += createMonthCalendar(year, m);
             }
         }
 
-        render();
+        renderCalendar();
     </script>
 </body>
 </html>
